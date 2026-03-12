@@ -1,0 +1,2 @@
+pip install flask torch torchvision timm pillow
+python app.py
