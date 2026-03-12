@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis - DR Detection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Ensure full-screen background image */
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: url("{{ url_for('static', filename='images/bg-retinal.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background: #575757;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+
+        .graph-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .graph-container h2 {
+            color: #00ffcc;
+            margin-bottom: 15px;
+        }
+
+        .graph-container img {
+            width: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .accuracy-graph {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/test">Test</a>
+        <a href="/predict">Prediction</a>
+        <a href="/analysis">Analysis</a>
+    </div>
+
+    <div class="container">
+        <h1>Analysis of Diabetic Retinopathy Detection</h1>
+
+        <div class="graph-container">
+            <h2>Total Retinopathy Classes Classified</h2>
+            <img src="{{ url_for('static', filename='images/output.png') }}" alt="Classification Graph">
+        </div>
+
+        <div class="graph-container accuracy-graph">
+            <h2>Accuracy Graph</h2>
+            <img src="{{ url_for('static', filename='images/accuracy.png') }}" alt="Accuracy Graph">
+        </div>
+    </div>
+
+</body>
+</html>
